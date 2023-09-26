@@ -11,7 +11,7 @@
  **/
 void quick_sort(int *array, size_t size)
 {
-	if (array == NULL || size == 0 || size == 1)
+	if (array == NULL || size < 2)
 		return;
 	sort(array, 0, size - 1, size);
 }
@@ -35,7 +35,7 @@ void sort(int *array, size_t first, size_t last, size_t size)
 	if (pivot != 0 && pivot > first)
 		sort(array, first, pivot - 1, size);
 	if (pivot < size - 1)
-		sort(array, pivot + 1, end, size);
+		sort(array, pivot + 1, last, size);
 }
 
 /**
