@@ -2,37 +2,37 @@
 
 /**
  * insertion_sort_list - function to sort doubly linked list in ascending order
- * @list: doubly linked list
+ * @list: The doubly linked list
  *
  * Return: void
  *
  **/
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *curr_sort = NULL;
+	listint_t *current_node = NULL;
 
 	if (list == NULL || *list == NULL)
 		return;
 
-	curr_sort = (*list)->next;
+	current_node = (*list)->next;
 
-	for (; curr_sort != NULL; curr_sort = curr_sort->next)
+	for (; current_node != NULL; current_node = current_node->next)
 	{
-		while (curr_sort->prev != NULL &&
-				curr_sort->n < curr_sort->prev->n)
+		while (current_node->prev != NULL &&
+				current_node->n < current_node->prev->n)
 		{
-			curr_sort->prev->next = curr_sort->next;
+			current_node->prev->next = current_node->next;
 
-			if (curr_sort->next != NULL)
-				curr_sort->next->prev = curr_sort->prev;
-			curr_sort->next = curr_sort->prev;
-			curr_sort->prev = curr_sort->prev->prev;
-			curr_sort->next->prev = curr_sort;
+			if (current_node->next != NULL)
+				current_node->next->prev = current_node->prev;
+			current_node->next = current_node->prev;
+			current_node->prev = current_node->prev->prev;
+			current_node->next->prev = current_node;
 
-			if (curr_sort->prev == NULL)
-				*list = curr_sort;
+			if (current_node->prev == NULL)
+				*list = current_node;
 			else
-				curr_sort->prev->next = curr_sort;
+				current_node->prev->next = current_node;
 			print_list(*list);
 		}
 	}

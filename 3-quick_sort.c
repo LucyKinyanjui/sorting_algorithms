@@ -18,55 +18,55 @@ void quick_sort(int *array, size_t size)
 
 /**
  * sort - function to call recursive and create new pivots
- * @array: array to be sorted
- * @start: beginning of sorting array
- * @end: end of sorting array
- * @size: size of array
+ * @array: The array to be sorted
+ * @first: The beginning of sorting array
+ * @last: The end of sorting array
+ * @size: The size of array
  * Return: void
  *
  **/
-void sort(int *array, size_t start, size_t end, size_t size)
+void sort(int *array, size_t first, size_t last, size_t size)
 {
 	size_t pivot;
 
-	if (end == 0 || end <= start)
+	if (last == 0 || last <= first)
 		return;
-	pivot = partition(array, start, end, size);
-	if (pivot != 0 && pivot > start)
-		sort(array, start, pivot - 1, size);
+	pivot = partition(array, first, last, size);
+	if (pivot != 0 && pivot > first)
+		sort(array, first, pivot - 1, size);
 	if (pivot < size - 1)
 		sort(array, pivot + 1, end, size);
 }
 
 /**
  * partition - function to partition array according to pivot
- * @array: array to be partitioned
- * @start: beginning of comparison index
- * @pivot: partition index
- * @size: size of array
+ * @array: The array to be partitioned
+ * @first: The beginning of comparison index
+ * @pivot: The partition index
+ * @size: The size of array
  * Return: void
  *
  **/
-size_t partition(int *array, size_t start, size_t pivot, size_t size)
+size_t partition(int *array, size_t first, size_t pivot, size_t size)
 {
 	size_t a;
 
-	for (a = start; a < pivot; a++)
+	for (a = first; a < pivot; a++)
 	{
 		if (array[a] < array[pivot])
 		{
-			if (a != start)
+			if (a != first)
 			{
 				swap(&array[start], &array[a]);
 				print_array(array, size);
 			}
-			start++;
+			first++;
 		}
 	}
-	if (array[start] > array[pivot])
+	if (array[first] > array[pivot])
 	{
-		swap(&array[start], &array[pivot]);
-		pivot = start;
+		swap(&array[first], &array[pivot]);
+		pivot = first;
 		print_array(array, size);
 	}
 	return (pivot);
@@ -81,9 +81,9 @@ size_t partition(int *array, size_t start, size_t pivot, size_t size)
  **/
 void swap(int *a, int *b)
 {
-	int temp = 0;
+	int tmp = 0;
 
-	temp = *a;
+	tmp = *a;
 	*a = *b;
-	*b = temp;
+	*b = tmp;
 }
