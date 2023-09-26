@@ -57,7 +57,7 @@ size_t partition(int *array, size_t first, size_t pivot, size_t size)
 		{
 			if (a != first)
 			{
-				swap(&array[start], &array[a]);
+				swap(&array[first], &array[a]);
 				print_array(array, size);
 			}
 			first++;
